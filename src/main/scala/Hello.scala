@@ -1,3 +1,5 @@
+package org.playwithscala
+
 object Hello {
   def main(args: Array[String]) =
     println(max(List(4, 2, -2)))

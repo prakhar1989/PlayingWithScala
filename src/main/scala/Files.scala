@@ -1,3 +1,5 @@
+package org.playwithscala
+
 import scala.io.Source
 
 object Files {

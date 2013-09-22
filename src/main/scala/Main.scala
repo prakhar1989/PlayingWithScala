@@ -1,3 +1,5 @@
+package org.playwithscala
+
 object RecFun {
 
   def main(args: Array[String]) {

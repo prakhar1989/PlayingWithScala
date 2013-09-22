@@ -1,3 +1,5 @@
+package org.playwithscala
+
 import CheckSumAccumulator.calculate
 
 object Summer extends Application {

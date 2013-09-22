@@ -1,3 +1,5 @@
+package org.playwithscala
+
 import scala.collection.mutable.Map
 
 class CheckSumAccumulator {
