@@ -2,7 +2,7 @@ import org.scalatest.FunSuite
 
 class HelloSuite extends FunSuite {
 
-  import Hello._
+  import org.playwithscala.Hello._
 
   // greater than function
   test("greater than function") {

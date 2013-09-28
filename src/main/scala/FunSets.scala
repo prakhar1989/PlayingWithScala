@@ -24,22 +24,14 @@ object FunSets {
   def forall(s: Set, p: Int => Boolean): Boolean = {
     // If ALL elements in S satisfy P
     def iter(a: Int): Boolean = { // iterate to limit
-      if (a == bound) true
+      if (a > bound) true
       else if(contains(s, a) && !p(a)) false
       else iter(a + 1) 
     }
     iter(-bound)
   }
 
-  def exists(s: Set, p: Int => Boolean): Boolean = {
-    // If ANY element in S satisfies P
-    def iter(a: Int): Boolean = {
-      if (a == bound) false
-      else if (contains(s, a) && p(a)) true
-      else iter(a + 1)
-    }
-    iter(-bound)
-  }
+  def exists(s: Set, p: Int => Boolean): Boolean = !forall(s, x => !p(x))
 
   def map(s: Set, f: Int => Int): Set = {
     // return a set by applying a tranformation to each element of S

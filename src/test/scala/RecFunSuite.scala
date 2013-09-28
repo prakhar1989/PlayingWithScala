@@ -2,7 +2,7 @@ import org.scalatest.FunSuite
 
 class RecFunSuite extends FunSuite {
 
-  import RecFun._
+  import org.playwithscala.RecFun._
 
   // balance function
   test("balance: '(if (zero? x) max (/ 1 x))' is balanced") {
