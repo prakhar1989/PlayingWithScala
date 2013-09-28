@@ -2,7 +2,7 @@ package org.playwithscala
 
 class Rational(n: Int, d: Int)  {
   
-  require(d != 0)
+  require(d != 0, "denominator must be non-negative")
 
   // fields 
   private val g = gcd(n.abs, d.abs) 
@@ -32,13 +32,12 @@ class Rational(n: Int, d: Int)  {
     new Rational( numer * i, denom)
 
   def - (that: Rational): Rational = // subtraction
-    new Rational(
-      numer * that.denom - denom * that.numer, 
-      denom * that.denom
-    )
+    this + -that
 
   def - (i: Int): Rational =
     new Rational( numer - i * denom, denom)
+
+  def unary_- : Rational = new Rational(-numer, denom) // adding - in front
 
   def / (that: Rational): Rational = // not too hard to guess, is it?
     new Rational( numer * that.denom, denom * that.numer )
@@ -46,10 +45,13 @@ class Rational(n: Int, d: Int)  {
   def / (i: Int): Rational = 
     new Rational( numer, denom * i)
 
-  def lessThan(that: Rational) : Boolean = 
+  def < (that: Rational) : Boolean = 
     this.numer * that.denom < that.numer * this.denom
 
+  def > (that: Rational) : Boolean =
+    !(this < that)
+
   def max(that: Rational): Rational =
-    if (this lessThan that) that else this
+    if (this < that) that else this
 
 }
