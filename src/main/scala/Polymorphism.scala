@@ -1,4 +1,4 @@
-package org.playingwithscala
+package org.playwithscala.poly
 
 object Polymorphism {
 

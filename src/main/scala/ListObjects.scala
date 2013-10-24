@@ -1,5 +1,3 @@
-package org.playwithscala
-
 object ListObjects {
   def main(args: Array[String]) {
     val c = new Cons[Int](30, new Cons(10, new Nil))
