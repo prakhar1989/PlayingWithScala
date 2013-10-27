@@ -29,7 +29,7 @@ object Lists {
 
   def isort(xs: List[Int]): List[Int] = xs match {
     case List() => List()
-    case x :: xs1 => insert(x, isort(xs1))
+    case y :: ys => insert(y, isort(ys))
   }
 
   def insert(x: Int, xs: List[Int]): List[Int] = xs match {
@@ -39,17 +39,42 @@ object Lists {
   }
 
   def append[T](xs: List[T], ys: List[T]): List[T] = 
-    xs match { // list concatenation
+    xs match { 
+      // Appends the reverse of xs to ys
       case List() => ys
       case x :: xs1 => append(xs1, x :: ys)
     }
 
   def rev[T](xs: List[T]): List[T] =
-    xs match { // list reverse
+    xs match { // list reverse O(n*2)
       case List() => List()
-      case x :: xs1 => rev(xs1) ::: List(x)
+      case y :: ys => rev(ys) ::: List(y)
+    }
+
+  def last[T](xs: List[T]): T = 
+    xs match { // last element of the list
+      case List() => throw new Error("last of empty set")
+      case List(x) => x
+      case y :: ys => last(ys)
     }
     
+  def init[T](xs: List[T]): List[T] =
+    xs match { // same as list.init
+      case List() => throw new Error("init of empty list")
+      case List(x) => List()
+      case y :: ys  => y :: init(ys)
+    }
+
+  def concat[T](xs: List[T], ys: List[T]): List[T] = 
+    // Appends xs into ys (check append above for difference)
+    xs match {
+      case List() => ys
+      case z :: zs => z :: concat(zs, ys)
+    }
+
+  def removeAt[T](xs: List[T], n: Int): List[T] =
+    (xs take n) ::: (xs drop n + 1)
+
   def msort[T](less: (T, T) => Boolean)(xs: List[T]): List[T] = {
     // less is the function that defines an ordering on the 
     // parent list. It compares two elements and returns a boolean
