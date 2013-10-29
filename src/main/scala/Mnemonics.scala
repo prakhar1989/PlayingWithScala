@@ -38,7 +38,7 @@ object Mnemonics {
     def translate(number: String): Set[String] = 
       encode(number) map (_ mkString " ")
 
-    println(translate("7225247386")) // contains "Scala is fun" 
+    println(translate("7225247386")) // contains "Scala is fun" 9810013059
     
   }
 }
